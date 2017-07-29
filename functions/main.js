@@ -1,26 +1,15 @@
 'use strict'
-// import config from './config'
 
-import { data } from './dummyData'
-require('dotenv').config()
+import {fetchIP} from  './fetchIP'
+///import saveNotificationRequest from './saveNotificationRequest'
 
-// decrypt environment variables before calling main function
-export default (event, context, callback) => {
-  // if (true) {
-  //   return main(event, context, callback)
-  // } else {
-  //   return callback(err)
-  // }
-  return main(event, context, callback)
-}
-
-const main = async (event, context, callback) => {
+const getIP = async (event, context, callback) => {
   try {
-
+    const reutrningData = fetchIP(queryStringParameters.query);
     callback(null, {
       statusCode: 200,
       body: JSON.stringify({
-        message: data,
+        message: reutrningData,
       }),
     })
   } catch (e) {
@@ -30,3 +19,21 @@ const main = async (event, context, callback) => {
     })
   }
 }
+
+const notifyChangedIP = async (event, context, callback) => {
+  try {
+    //notify
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Success',
+      }),
+    })
+  } catch (e) {
+    callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({message: e.message}),
+    })
+  }
+}
+export {getIP, notifyChangedIP }

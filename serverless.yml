@@ -5,11 +5,18 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs6.10.2
+  runtime: nodejs6.10
 
 functions:
-  main:
-    handler: main.default
+  getIP:
+    handler: main.getIP
+    events:
+      - http:
+          method: GET
+          path: ""
+
+  notifyChangedIP:
+    handler: main.notifyChangedIP
     events:
       - http:
           method: GET
