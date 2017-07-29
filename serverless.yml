@@ -19,5 +19,5 @@ functions:
     handler: main.notifyChangedIP
     events:
       - http:
-          method: GET
-          path: ""
+          method: POST
+          path: "notify"

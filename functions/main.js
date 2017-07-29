@@ -1,15 +1,15 @@
 'use strict'
 
 import {fetchIP} from  './fetchIP'
-///import saveNotificationRequest from './saveNotificationRequest'
+import {saveNotificationRequest} from './saveNotificationRequest'
 
 const getIP = async (event, context, callback) => {
   try {
-    const reutrningData = fetchIP(queryStringParameters.query);
+    const returningData = fetchIP(event.queryStringParameters.query);
     callback(null, {
       statusCode: 200,
       body: JSON.stringify({
-        message: reutrningData,
+        message: returningData,
       }),
     })
   } catch (e) {
@@ -22,7 +22,9 @@ const getIP = async (event, context, callback) => {
 
 const notifyChangedIP = async (event, context, callback) => {
   try {
-    //notify
+    console.log(event.body)
+    saveNotificationRequest(event.body  )
+
     callback(null, {
       statusCode: 200,
       body: JSON.stringify({

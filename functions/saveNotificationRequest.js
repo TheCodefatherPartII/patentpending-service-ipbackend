@@ -8,27 +8,38 @@ const client = new Client({
   port: 5432,
 })
 
-client.connect()
-
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end()
-})
 
 
-export const saveNotificationRequest = async (event, context, callback) => {
-  try {
-
-    callback(null, {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: 'Success',
-      }),
-    })
-  } catch (e) {
-    callback(null, {
-      statusCode: 400,
-      body: JSON.stringify({message: e.message}),
-    })
+export const saveNotificationRequest = async (requestToSave) => {
+  if(! (requestToSave.tradeMarkNumber || requestToSave.australianApplicationNumber) ) {
+    console.log('No IP Primary key present, ya darn fool')
+    return {success:false, error: 'No IP Primary key present, ya darn fool'}
   }
+
+  client.connect()
+  const query = {
+    text: `INSERT INTO public.ip_change_notifcation_requests(
+            trade_mark_number, australian_application_number, email_address,
+            last_notified_state, device_uuid)
+            VALUES ($1, $2, $3, $4, $5);
+           `,
+    values: [
+      requestToSave.tradeMarkNumber,
+      requestToSave.australianApplicationNumber,
+      requestToSave.emailAddress,
+      JSON.stringify(requestToSave.lastNotifiedState),
+      requestToSave.deviceUUID
+    ],
+  }
+  let result
+  await client.query(query)
+    .then(res => {
+      result = {success: true}
+    })
+    .catch(e => {
+      result = {success: false, error: e}
+      console.log(e)
+    })
+  return result
 }
+

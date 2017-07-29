@@ -1,99 +1,117 @@
 export const data =
   [
     {
-      applicationId: 12341234,
+      tradeMarkNumber: 12341234,
       title: "Tedison Inc",
       type: "trademark",
       applicantName: "Edison, Tommy",
-      stages: {
-        filed: {
+      stages: [
+        {
+          stageName: "filed",
           finished: true,
           dateFinished: "1999-01-01"
         },
-        waitingForExamination: {
+        {
+          stageName:"waitingForExamination",
           finished: true,
           dateFinished: "1999-01-02"
         },
-        beingExamined: {
+        {
+          stageName:"beingExamined",
           finished: true,
           dateFinished: "1999-02-02"
         },
-        acceptanceAndOppositionPhase: {
+         {
+          stageName:"acceptanceAndOppositionPhase",
           finished: true,
           dateFinished: "1999-05-05"
         },
-        registered: {
+        {
+          stageName:"registered",
           finished: false,
           estimatedDateOfFinish: "1999-05-06"
         },
-        expired: {
+        {
+          stageName:"expired",
           finished: false,
           estimatedDateOfFinish: "2000-05-01"
         }
-      }
+      ]
     },
     {
-      applicationId: 123,
+      tradeMarkNumber: 123,
       title: "LightBulb - Lighting the future",
       type: "trademark",
       applicantName: "Edison, Tommy",
-      stages: {
-        filed: {
+      stages: [
+        {
+          stageName: "filed",
           finished: true,
           dateFinished: "1999-01-01"
         },
-        waitingForExamination: {
+        {
+          stageName:"waitingForExamination",
           finished: true,
           dateFinished: "1999-01-02"
         },
-        beingExamined: {
+        {
+          stageName:"beingExamined",
           finished: true,
-          dateFinished: "1999-01-07"
+          dateFinished: "1999-02-02"
         },
-        acceptanceAndOppositionPhase: {
+        {
+          stageName:"acceptanceAndOppositionPhase",
+          finished: true,
+          dateFinished: "1999-05-05"
+        },
+        {
+          stageName:"registered",
           finished: false,
-          estimatedDateOfFinish: "1999-04-07"
+          estimatedDateOfFinish: "1999-05-06"
         },
-        registered: {
-          finished: false,
-          estimatedDateOfFinish: "1999-05-01"
-        },
-        expired: {
+        {
+          stageName:"expired",
           finished: false,
           estimatedDateOfFinish: "2000-05-01"
         }
-      }
+      ]
     },
     {
-      applicationId: 124,
+      australianApplicationNumber: 124,
       title: "Perpetual Motion Machine",
       type: "patent",
       applicantName: "Smith, James",
-      stages: {
-        filed: {
+      stages: [
+        {
+          stageName: "filed",
           finished: true,
           dateFinished: "1999-01-01"
         },
-        waitingForExamination: {
+        {
+          stageName:"waitingForExamination",
           finished: true,
           dateFinished: "1999-01-02"
         },
-        beingExamined: {
+        {
+          stageName:"beingExamined",
           finished: true,
-          dateFinished:"1999-01-07"
+          dateFinished: "1999-02-02"
         },
-        acceptanceAndOppositionPhase: {
-          finished: false,
-          estimatedDateOfFinish: "1999-04-07"
+        {
+          stageName:"acceptanceAndOppositionPhase",
+          finished: true,
+          dateFinished: "1999-05-05"
         },
-        completed: {
+        {
+          stageName:"registered",
           finished: false,
-          estimatedDateOfFinish:"1999-05-01"
+          estimatedDateOfFinish: "1999-05-06"
         },
-        expired: {
+        {
+          stageName:"expired",
           finished: false,
-          estimatedDateOfFinish:"2000-05-01"
+          estimatedDateOfFinish: "2000-05-01"
         }
-      }
+      ]
     }
     ]
