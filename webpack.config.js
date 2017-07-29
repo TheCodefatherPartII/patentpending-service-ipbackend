@@ -3,8 +3,14 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    main: './functions/main.js',
+    main: './main.js',
   },
+  // resolve: {
+  //   alias: {
+  //     'pg-native': path.join(__dirname, 'aliases/pg-native.js'),
+  //     'pgpass$': path.join(__dirname, 'aliases/pgpass.js')
+  //   }
+  // },
   output: {
     libraryTarget: 'commonjs',
     path: path.join(__dirname, 'dist'),
@@ -14,21 +20,10 @@ module.exports = {
     'aws-sdk',
     'axios',
     'lodash',
+    'pg-native'
   ],
   target: 'node',
   devtool: 'source-map',
-  plugins: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        unused: true,
-        dead_code: true,
-        warnings: false,
-        drop_debugger: true
-      }
-    })
-  ],
   module: {
     loaders: [{
       test: /\.js$/,

@@ -62,3 +62,6 @@ typings/
 
 # ignore the dist
 dist/
+
+#ignore serverless
+.serverless

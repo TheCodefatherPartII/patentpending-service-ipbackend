@@ -1,4 +1,4 @@
-service: patentpending-service-ipbackend
+service: patentpending-service-ipbackend-devs
 
 plugins:
   - serverless-webpack
@@ -14,7 +14,6 @@ functions:
       - http:
           method: GET
           path: ""
-
   notifyChangedIP:
     handler: main.notifyChangedIP
     events:
