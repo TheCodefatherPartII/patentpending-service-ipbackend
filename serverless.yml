@@ -1,0 +1,16 @@
+service: patentpending-service-ipbackend
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs6.10.2
+
+functions:
+  main:
+    handler: main.default
+    events:
+      - http:
+          method: GET
+          path: ""

@@ -60,3 +60,5 @@ typings/
 # mac weirdness
 .DS_Store
 
+# ignore the dist
+dist/
