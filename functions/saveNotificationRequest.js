@@ -1,18 +1,9 @@
 'use strict'
-
-
-
-
+import conf from './config'
 export const saveNotificationRequest = async (requestToSave) => {
-const cn ={
-  host: 'codefather.cxjadyyca5ie.ap-southeast-2.rds.amazonaws.com',
-  port: 5432,
-  database: 'codefather',
-  user: 'codefather',
-  password: 'codefather',
-}
+
   const pgp = require('pg-promise')()
-  const client = pgp(cn)
+  const client = pgp(conf.dbCon)
 
   if(! (requestToSave.tradeMarkNumber || requestToSave.australianApplicationNumber) ) {
     console.log('No IP Primary key present, ya darn fool')
@@ -31,17 +22,17 @@ const cn ={
       requestToSave.emailAddress,
       JSON.stringify(requestToSave.lastNotifiedState),
       requestToSave.deviceUUID
-    ])
-  await client.none ('SELECT 1'
+    ]
   ).then(res => {
       console.log('success')
       result = {success: true}
+      pgp.end()
 
     })
     .catch(e => {
       result = {success: false, error: e}
       console.log(e)
-
+      pgp.end()
     })
   console.log('code after query')
   return result

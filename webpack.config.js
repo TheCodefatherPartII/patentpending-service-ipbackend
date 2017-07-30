@@ -5,12 +5,6 @@ module.exports = {
   entry: {
     main: './main.js',
   },
-  // resolve: {
-  //   alias: {
-  //     'pg-native': path.join(__dirname, 'aliases/pg-native.js'),
-  //     'pgpass$': path.join(__dirname, 'aliases/pgpass.js')
-  //   }
-  // },
   output: {
     libraryTarget: 'commonjs',
     path: path.join(__dirname, 'dist'),

@@ -5,7 +5,7 @@ import {saveNotificationRequest} from './functions/saveNotificationRequest'
 
 const getIP = async (event, context, callback) => {
   try {
-    const returningData = fetchIP(event.queryStringParameters.query);
+    const returningData = await fetchIP(event.queryStringParameters.query);
     callback(null, {
       statusCode: 200,
       body: JSON.stringify({
