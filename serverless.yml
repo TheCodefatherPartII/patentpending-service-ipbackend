@@ -23,3 +23,11 @@ functions:
       - http:
           method: POST
           path: "notify"
+  sendNotification:
+    timeout: 60
+    handler: main.checkAllNotifyRequests
+    events:
+      - http:
+          method: GET
+          path: "checkAll"
+      - schedule: rate(24 hours)

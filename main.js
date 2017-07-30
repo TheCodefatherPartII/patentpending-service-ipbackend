@@ -2,7 +2,7 @@
 
 import {fetchIP} from  './functions/fetchIP'
 import {saveNotificationRequest} from './functions/saveNotificationRequest'
-
+import {checkAllNotifyRequests} from './functions/checkAllNotifyRequests'
 const getIP = async (event, context, callback) => {
   try {
     const returningData = await fetchIP(event.queryStringParameters.query);
@@ -51,4 +51,6 @@ const notifyChangedIP = async (event, context, callback) => {
     })
   }
 }
-export {getIP, notifyChangedIP }
+
+
+export {getIP, notifyChangedIP, checkAllNotifyRequests }
